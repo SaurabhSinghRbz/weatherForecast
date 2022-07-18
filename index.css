@@ -56,7 +56,7 @@ input:hover {
 }
 
 
-button {
+#searchBox button {
     margin-left: 8%;
     height: 100%;
     width: 100%;
@@ -188,4 +188,14 @@ iframe {
     width: 100%;
     border-radius: 5%;
 
+}
+
+#buttBox {
+    margin: 5%;
+    height: 100px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
 }
