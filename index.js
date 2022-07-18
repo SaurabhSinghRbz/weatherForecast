@@ -191,3 +191,6 @@ function displayUpcomingForecast(data) {
         document.querySelector("#upcomingForecast").append(div);
     }
 }
+
+
+// checking
