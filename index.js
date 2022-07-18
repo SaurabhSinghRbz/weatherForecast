@@ -192,5 +192,3 @@ function displayUpcomingForecast(data) {
     }
 }
 
-
-// checking
