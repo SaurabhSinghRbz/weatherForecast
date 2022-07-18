@@ -1,7 +1,7 @@
-let apiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
+var myApiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
 async function getData() {
     try {
-        let myApiKey = "0f4df7381719acf8862567cf257610fa";
+
         let city = document.querySelector("#city").value
         let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${myApiKey}&units=metric`
         let res = await fetch(url);
@@ -22,6 +22,7 @@ async function getData() {
 }
 
 function displayData(data) {
+    document.querySelector("#upcomingForecast").innerHTML = null;
     document.getElementById("buttBox").innerHTML = ""
     document.getElementById("container").innerHTML = "";
     let cityName = data.city.name
@@ -137,8 +138,38 @@ function displayData(data) {
     butt.innerHTML = "Show upcoming 7 days forecast 🡲";
     butt.className = "glow-on-hover";
     document.querySelector("#buttBox").append(butt)
-
+    butt.onclick = function () { displayUpcomingForecast(data); };
 }
 
 
 
+
+
+function displayUpcomingForecast(data) {
+    document.querySelector("#upcomingForecast").value = null;
+    let images = ["https://www.freeiconspng.com/uploads/sunny-icon-17.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmE4Op7nZYwHw0GLd93HW8O74m2gIcTSqLsqw-VBNK0R9C33CRoU0jl1NzfZQ2ptmXB4&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThjKLX_013XxV-PU20cDeGrQGXES2zUC8jIYA8qFcL9-5EBK0iiTcisJiNegFJBGFgAvE&usqp=CAU"]
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    document.querySelector("#upcomingForecast").innerHTML = null;
+    for (let i = 0; i <= 6; i++) {
+        let div = document.createElement("div");
+        let name = document.createElement("h2");
+        name.innerText = days[i];
+        let temp = document.createElement("p");
+        temp.innerText = data.list[i].main.temp + "°";
+        let image = document.createElement("img");
+        if (+data.list[i].main.temp > 30) {
+            image.src = images[0];
+        } else if (+data.list[i].main.temp > 20 && +data.list[i].main.temp < 25) {
+            image.src = images[1]
+        } else {
+            image.src = images[2];
+        }
+        let lowTemp = document.createElement("p");
+        lowTemp.innerText = data.list[i].main.temp_min + "°C";
+        let wind = document.createElement("p");
+        wind.innerText = data.list[i].wind.speed + "Km/h";
+
+        div.append(name, temp, image, lowTemp, wind);
+        document.querySelector("#upcomingForecast").append(div);
+    }
+}
