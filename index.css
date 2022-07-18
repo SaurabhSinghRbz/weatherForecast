@@ -274,3 +274,27 @@ iframe {
         background-position: 0 0;
     }
 }
+
+
+
+#upcomingForecast {
+    width: 1000px;
+    display: flex;
+    text-align: center;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    margin: 20px auto;
+    border-radius: 5px;
+    /* background-color: rgb(153, 245, 245); */
+    background-color: rgb(29, 136, 223);
+    -moz-box-shadow: 0 0 5px 5px rgb(214, 206, 206);
+    -webkit-box-shadow: 0 0 5px 5px rgb(199, 191, 191);
+    box-shadow: 0 0 5px 5px rgb(212, 203, 203);
+}
+
+#upcomingForecast>div {
+    margin: 10px 20px;
+}
+
+#upcomingForecast>div>img {
+    width: 100px;
+}
