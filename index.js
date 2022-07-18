@@ -130,6 +130,16 @@ function displayData(data) {
     iframeBox.src = `https://maps.google.com/maps?q=${mapCity}&t=k&z=13&ie=UTF8&iwloc=&output=embed`;
     div2.append(iframeBox);
     document.getElementById("container").append(div1, div2)
+
+
+
+    let buttonBox = document.createElement("div")
+    buttonBox.id = "buttBox"
+    let butt = document.createElement("button")
+    butt.innerHTML = "Show upcoming 7 days forecast"
+    buttonBox.append(butt)
+    document.querySelector("body").append(buttonBox)
+
 }
 
 
