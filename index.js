@@ -20,6 +20,8 @@ async function getData() {
 }
 
 function displayData(data) {
+    document.getElementById("upcomingForecast").style.backgroundColor = "none"
+    document.getElementById("upcomingForecast").style.boxShadow = "none"
     document.querySelector("#upcomingForecast").innerHTML = null;
     document.getElementById("buttBox").innerHTML = ""
     document.getElementById("container").innerHTML = "";
@@ -161,7 +163,7 @@ function displayUpcomingForecast(data) {
         days.push(orderDay[j])
     }
 
-    let images = ["https://www.freeiconspng.com/uploads/sunny-icon-17.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmE4Op7nZYwHw0GLd93HW8O74m2gIcTSqLsqw-VBNK0R9C33CRoU0jl1NzfZQ2ptmXB4&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThjKLX_013XxV-PU20cDeGrQGXES2zUC8jIYA8qFcL9-5EBK0iiTcisJiNegFJBGFgAvE&usqp=CAU"]
+    let images = ["./images/1.png", "./images/2.png", "./images/3.png"]
 
     document.querySelector("#upcomingForecast").innerHTML = null;
     for (let i = 0; i <= 7; i++) {
