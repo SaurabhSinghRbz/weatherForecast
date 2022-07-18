@@ -7,9 +7,7 @@ async function getData() {
         let res = await fetch(url);
         let data = await res.json();
 
-        // let t = data.list[0].dt_txt
-        // const d = new Date(1658015370);
-        // let day = d.getDay();
+
         if (city == "") {
             alert("Please type a city name")
         } else {
@@ -147,10 +145,26 @@ function displayData(data) {
 
 function displayUpcomingForecast(data) {
     document.querySelector("#upcomingForecast").value = null;
+
+    let orderDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    let t = data.list[0].dt_txt
+    const d = new Date(t);
+    let day = d.getDay();
+    let days = [];
+    days.push("Today")
+    for (let i = day + 1; i < orderDay.length; i++) {
+        days.push(orderDay[i])
+    }
+
+    for (let j = 0; j <= day; j++) {
+        days.push(orderDay[j])
+    }
+
     let images = ["https://www.freeiconspng.com/uploads/sunny-icon-17.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmE4Op7nZYwHw0GLd93HW8O74m2gIcTSqLsqw-VBNK0R9C33CRoU0jl1NzfZQ2ptmXB4&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThjKLX_013XxV-PU20cDeGrQGXES2zUC8jIYA8qFcL9-5EBK0iiTcisJiNegFJBGFgAvE&usqp=CAU"]
-    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
     document.querySelector("#upcomingForecast").innerHTML = null;
-    for (let i = 0; i <= 6; i++) {
+    for (let i = 0; i <= 7; i++) {
         let div = document.createElement("div");
         let name = document.createElement("h2");
         name.innerText = days[i];
@@ -170,6 +184,8 @@ function displayUpcomingForecast(data) {
         wind.innerText = data.list[i].wind.speed + "Km/h";
 
         div.append(name, temp, image, lowTemp, wind);
+        document.getElementById("upcomingForecast").style.backgroundColor = "#0f0f0fd7"
+        document.getElementById("upcomingForecast").style.boxShadow = "0 0 5px 5px rgb(212, 203, 203)"
         document.querySelector("#upcomingForecast").append(div);
     }
 }
