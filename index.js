@@ -22,6 +22,7 @@ async function getData() {
 }
 
 function displayData(data) {
+    document.getElementById("buttBox").innerHTML = ""
     document.getElementById("container").innerHTML = "";
     let cityName = data.city.name
     let cloud = data.list[0].weather[0].description
@@ -132,13 +133,10 @@ function displayData(data) {
     document.getElementById("container").append(div1, div2)
 
 
-
-    let buttonBox = document.createElement("div")
-    buttonBox.id = "buttBox"
     let butt = document.createElement("button")
-    butt.innerHTML = "Show upcoming 7 days forecast"
-    buttonBox.append(butt)
-    document.querySelector("body").append(buttonBox)
+    butt.innerHTML = "Show upcoming 7 days forecast 🡲";
+    butt.className = "glow-on-hover";
+    document.querySelector("#buttBox").append(butt)
 
 }
 
