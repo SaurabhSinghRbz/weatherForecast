@@ -7,7 +7,7 @@ async function getData() {
         let res = await fetch(url);
         let data = await res.json();
 
-
+        console.log(data)
         if (city == "") {
             alert("Please type a city name")
         } else {
@@ -20,6 +20,7 @@ async function getData() {
 }
 
 function displayData(data) {
+    console.log(data)
     document.getElementById("upcomingForecast").style.backgroundColor = "none"
     document.getElementById("upcomingForecast").style.boxShadow = "none"
     document.querySelector("#upcomingForecast").innerHTML = null;
@@ -146,6 +147,7 @@ function displayData(data) {
 
 
 function displayUpcomingForecast(data) {
+
     document.querySelector("#upcomingForecast").value = null;
 
     let orderDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
