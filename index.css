@@ -23,12 +23,13 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
+    padding: 0 20px;
 }
 
 input {
     padding: 0px 20px;
     font-size: 20px;
-    height: 60px;
+    height: 50px;
     width: 600px;
     background-color: #0f0f0fde;
     border-radius: 30px;
@@ -37,19 +38,14 @@ input {
     /* outline: none; */
 }
 
-
-
-
 input::placeholder {
     font-size: 20px;
     color: lightgrey;
     /* padding-left: 20px; */
 }
 
-
-
 #searchBox button {
-    height: 60px;
+    height: 50px;
     width: 180px;
     position: relative;
     background-color: #AAA;
@@ -84,9 +80,6 @@ input::placeholder {
     background-color: blue;
 }
 
-
-
-
 button:hover {
     transform: scale(1.05);
     box-shadow:
@@ -102,43 +95,52 @@ button:hover {
 }
 
 
-
-
+/* Search Results Section -----------> */
 #container {
     padding: 20px;
     display: grid;
-    grid-template-columns: 30% 65%;
+    grid-template-columns: 35% 60%;
     justify-content: space-around;
 }
 
-#container>:first-child {
-
-    background-color: #0f0f0fd7;
+#tempBox {
+    width: 100%;
+    height: auto;
+    background-color: #0f0f0fde;
+    color: white;
+    margin-bottom: 30px;
 }
 
-#container>div {
+#mapBox {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+
+
+/* #container>div {
     color: white;
     border-radius: 5%;
     height: auto;
-    /* padding: 5px 15px; */
-}
+} */
 
 #tempBox>:nth-child(2) {
     display: grid;
     grid-template-columns: 60% 40%;
     background-image: url("./images/day.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     border-bottom: 2px solid grey;
 }
 
 #tempBox>:nth-child(2)>div {
     height: 150px;
     margin: auto;
-
 }
 
 #tempBox>:nth-child(2)>div>:first-child {
-    font-size: 60px;
+    font-size: 4rem;
 }
 
 #tempBox>:nth-child(2)>div>:last-child {
@@ -146,8 +148,7 @@ button:hover {
 }
 
 #tempBox>div>div>img {
-    height: 100%;
-    width: 100%;
+    height: 90%;
 }
 
 
@@ -177,12 +178,10 @@ button:hover {
 iframe {
     height: 100%;
     width: 100%;
-    border-radius: 5%;
-
 }
 
 #buttBox {
-    margin: 10px 5%;
+    margin: auto;
     height: 100px;
     width: 90%;
     display: flex;
@@ -191,7 +190,6 @@ iframe {
 }
 
 #buttBox>button {
-
     height: auto;
     width: auto;
     font-size: 20px;
@@ -284,4 +282,36 @@ iframe {
 
 #upcomingForecast>div>img {
     width: 100px;
+}
+
+
+@media screen and (max-width: 980px) {
+    #container {
+        grid-template-columns: 45% 50%;
+    }
+
+    #tempBox>:nth-child(2)>div>:first-child {
+        font-size: 3.2rem;
+    }
+
+    #tempBox>div>div>img {
+        height: 60%;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    #container {
+        grid-template-columns: 90%;
+    }
+
+
+    #mapBox {
+        height: 400px;
+    }
+
+    #tempBox>div>div>img {
+        height: 60%;
+    }
+
 }
