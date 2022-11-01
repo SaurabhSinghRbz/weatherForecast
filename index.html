@@ -13,7 +13,7 @@
 <body>
     <p id="header">Weather Forecast</p>
     <div id="searchBox">
-        <input type="Search" placeholder="Enter a city name..." id="city">
+        <input type="Search" placeholder="Enter a city name..." id="city" oninput="clearContainer()">
         <button type="submit" onclick="getData()">Search</button>
     </div>
     <div id="container"></div>

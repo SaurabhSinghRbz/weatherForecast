@@ -3,21 +3,45 @@ async function getData() {
     try {
         document.getElementById('container').classList.remove('mountingAnimation');
         document.getElementById("container").innerHTML = "";
+        document.getElementById("container").style.display = "grid";
         document.getElementById("upcomingForecast").style.display = "none";
         document.getElementById("buttBox").innerHTML = "";
         let city = document.querySelector("#city").value
+        if (city === "") {
+            return alert("Please enter a city name");
+        }
         let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${myApiKey}&units=metric`
         let res = await fetch(url);
         let data = await res.json();
-        if (city == "") {
-            alert("Please type a city name")
-        } else {
-            displayData(data);
-        }
+        displayData(data);
     } catch (error) {
-        console.log(error);
+        let city = document.querySelector("#city").value
+        displayError(city);
     }
 }
+
+function clearContainer() {
+    let city = document.querySelector("#city").value
+    if (city === "") {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("upcomingForecast").style.display = "none";
+        document.getElementById("buttBox").innerHTML = "";
+    }
+}
+
+
+
+function displayError(city) {
+    document.getElementById("container").innerHTML = "";
+    document.getElementById("container").style.display = "block";
+    document.getElementById("upcomingForecast").style.display = "none";
+    document.getElementById("buttBox").innerHTML = "";
+    let error = document.createElement("div");
+    error.classList.add("error");
+    error.innerHTML = `<p>Sorry, we couldn't find the city ${city}, <br/> Try searching for another city.</p>`;
+    document.getElementById("container").appendChild(error);
+}
+
 
 function displayData(data) {
     document.getElementById('container').className = 'mountingAnimation';
