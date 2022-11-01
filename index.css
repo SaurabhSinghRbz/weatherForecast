@@ -352,6 +352,11 @@ iframe {
 }
 
 @media screen and (max-width: 680px) {
+    body {
+        background-image: url("./images/weather1.jpg");
+        background-size: 100% 150%;
+    }
+
     #container {
         grid-template-columns: 90%;
     }
