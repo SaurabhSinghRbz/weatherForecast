@@ -51,22 +51,9 @@ function displayData(data) {
     date.innerText = today.toDateString();
     let time = document.createElement("p");
     time.innerText = "Time - " + today.toLocaleTimeString();
-    timeDateBox.append(date, time);
+    timeDateBox.append(time, date);
 
     cityDiv.append(cityname, timeDateBox);
-    // let h2 = document.createElement("p")
-    // let h3 = document.createElement("p")
-    // let h4 = document.createElement("p")
-
-    // h3.innerHTML = new Date().toDateString();
-    // var today = new Date();
-    // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    // var time = today.getHours() + ":" + today.getMinutes();
-    // h2.innerHTML = cityName;
-    // h4.innerHTML = "Time : " + time;
-    // cityDiv.append(h2, h3, h4);
-
-
 
     let div11 = document.createElement("div");
 
@@ -88,55 +75,55 @@ function displayData(data) {
 
     let div12 = document.createElement("div");
     let p1 = document.createElement("p");
-    p1.innerHTML = "Maximum Temp : "
+    p1.innerHTML = "Maximum Temp"
     let p1span = document.createElement("span");
     p1span.innerHTML = `${max_temp}°C`
     p1.append(p1span);
 
     let p2 = document.createElement("p");
-    p2.innerHTML = "Minimum Temp : "
+    p2.innerHTML = "Minimum Temp"
     let p2span = document.createElement("span");
     p2span.innerHTML = `${min_temp}°C`
     p2.append(p2span);
 
 
     let p3 = document.createElement("p");
-    p3.innerHTML = "Ground Level : "
+    p3.innerHTML = "Ground Level"
     let p3span = document.createElement("span");
     p3span.innerHTML = `${ground_lev}`
     p3.append(p3span);
 
     let p4 = document.createElement("p");
-    p4.innerHTML = "Wind Speed : "
+    p4.innerHTML = "Wind Speed"
     let p4span = document.createElement("span");
     p4span.innerHTML = `${wind} km/h`
     p4.append(p4span);
 
     let p5 = document.createElement("p");
-    p5.innerHTML = "Feels like : "
+    p5.innerHTML = "Feels like"
     let p5span = document.createElement("span");
     p5span.innerHTML = `${feelsLike}`
     p5.append(p5span);
 
     let p6 = document.createElement("p");
-    p6.innerHTML = "See Level : "
+    p6.innerHTML = "See Level"
     let p6span = document.createElement("span");
     p6span.innerHTML = `${seeLevel}`
     p6.append(p6span);
 
     let p7 = document.createElement("p");
-    p7.innerHTML = "Humidity : "
+    p7.innerHTML = "Humidity"
     let p7span = document.createElement("span");
     p7span.innerHTML = `${hum}`
     p7.append(p7span);
 
     let p8 = document.createElement("p");
-    p8.innerHTML = "Pressure : "
+    p8.innerHTML = "Pressure"
     let p8span = document.createElement("span");
     p8span.innerHTML = `${press}`
     p8.append(p8span);
     let p9 = document.createElement("p");
-    p9.innerHTML = "Clouds : "
+    p9.innerHTML = "Clouds"
     let p9span = document.createElement("span");
     p9span.innerHTML = `${cloud} ${clouds}`
     p9.append(p9span);
@@ -173,7 +160,7 @@ function displayUpcomingForecast(data) {
 
     document.querySelector("#upcomingForecast").value = null;
 
-    let orderDay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let orderDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     let t = data.list[0].dt_txt
     const d = new Date(t);
@@ -192,11 +179,23 @@ function displayUpcomingForecast(data) {
 
     document.querySelector("#upcomingForecast").innerHTML = null;
     for (let i = 0; i <= 7; i++) {
+
         let div = document.createElement("div");
-        let name = document.createElement("h2");
+        div.className = "upcomingForecastBox";
+        let name = document.createElement("p");
         name.innerText = days[i];
-        let temp = document.createElement("p");
-        temp.innerText = data.list[i].main.temp + "°";
+
+        // get the next date-------------------
+        const today = new Date();
+        const nextDay = new Date(today);
+        nextDay.setDate(today.getDate() + i);
+
+        let date = document.createElement("p");
+        let withMonth = nextDay.toDateString().split(" ");
+        date.innerText = withMonth[2] + " " + withMonth[1] + " " + withMonth[3];
+        // ---------------------------------------------------------------------
+
+
         let image = document.createElement("img");
         if (+data.list[i].main.temp > 30) {
             image.src = images[0];
@@ -210,10 +209,9 @@ function displayUpcomingForecast(data) {
         let wind = document.createElement("p");
         wind.innerText = data.list[i].wind.speed + "Km/h";
 
-        div.append(name, temp, image, lowTemp, wind);
-        document.getElementById("upcomingForecast").style.backgroundColor = "#0f0f0fd7"
+        div.append(name, date, image, lowTemp, wind);
+        document.getElementById("upcomingForecast").style.backgroundColor = "#0f0f0fe1"
         document.getElementById("upcomingForecast").style.boxShadow = "0 0 5px 5px rgb(212, 203, 203)"
         document.querySelector("#upcomingForecast").append(div);
     }
 }
-

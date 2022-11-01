@@ -1,12 +1,14 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Verdana, sans-serif;
+    font-family: system-ui;
+
 }
 
 body {
     background-image: url("./images/weather.jpg");
     background-size: cover;
+    overflow-x: hidden;
 }
 
 #header {
@@ -97,7 +99,6 @@ button:hover {
 
 /* Search Results Section -----------> */
 #container {
-    padding: 20px;
     display: grid;
     grid-template-columns: 35% 60%;
     justify-content: space-around;
@@ -106,7 +107,7 @@ button:hover {
 #tempBox {
     width: 100%;
     height: auto;
-    background-color: #0f0f0fde;
+    background-color: #0f0f0fe1;
     color: white;
     margin-bottom: 30px;
 }
@@ -116,6 +117,34 @@ button:hover {
     height: auto;
     margin-bottom: 30px;
 }
+
+#cityDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+}
+
+#cityDiv>p {
+    font-size: 35px;
+    font-weight: lighter !important;
+}
+
+#timeDateBox>p {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+#timeDateBox {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+#tempBox span {
+    font-weight: lighter;
+}
+
 
 
 #tempBox>:nth-child(2) {
@@ -137,7 +166,7 @@ button:hover {
 }
 
 #tempBox>:nth-child(2)>div>:first-child {
-    font-size: 3.5rem;
+    font-size: 4rem;
 }
 
 #tempBox>:nth-child(2)>div>:last-child {
@@ -158,36 +187,19 @@ button:hover {
 }
 
 #tempBox>:last-child {
-    padding: 20px;
+    padding: 20px 30px;
 }
 
-#tempBox p {
-    line-height: 30px;
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#cityDiv {
+#tempBox>:last-child p {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px 0;
-}
-
-#cityDiv>p {
-    font-size: 35px;
-    font-weight: lighter !important;
-}
-
-#timeDateBox>p {
+    justify-content: space-between;
     font-size: 18px;
-    font-weight: lighter;
 }
 
-#tempBox span {
-    font-weight: lighter;
+#tempBox>:last-child p>span {
+    font-weight: 400;
 }
+
 
 iframe {
     height: 100%;
@@ -281,17 +293,27 @@ iframe {
 
 
 #upcomingForecast {
-    /* background-color: #0f0f0fd7; */
     color: white;
-    width: 90%;
+    width: 85%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
-    margin: 20px auto;
     padding: 20px;
     border-radius: 15px;
+    height: auto;
+    margin: 20px auto;
+    margin-bottom: 50px;
+}
+
+#upcomingForecast>div {
+    width: auto;
+    height: auto;
+    margin: 15px 0;
+    padding: 5px;
+    padding-right: 20px;
+    border-right: 2px solid grey;
 }
 
 #upcomingForecast>div>img {
@@ -301,7 +323,7 @@ iframe {
 
 @media screen and (max-width: 980px) {
     #container {
-        grid-template-columns: 45% 50%;
+        grid-template-columns: 50% 45%;
     }
 
     #tempBox>:nth-child(2)>div>:first-child {
@@ -312,6 +334,9 @@ iframe {
         height: 60%;
     }
 
+    #tempBox>:nth-child(2)>div {
+        height: 150px;
+    }
 }
 
 @media screen and (max-width: 680px) {
@@ -325,14 +350,6 @@ iframe {
 
     #mapBox {
         height: 400px;
-    }
-
-    #tempBox>div>div>img {
-        height: 60%;
-    }
-
-    #tempBox>:nth-child(2)>div {
-        height: 150px;
     }
 
 }
