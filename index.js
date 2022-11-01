@@ -1,6 +1,9 @@
 var myApiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
 import footer from "./Components/footer.js";
 document.getElementById("footer").innerHTML = footer();
+
+document.querySelector("#search").addEventListener("click", getData);
+
 async function getData() {
     try {
 
@@ -9,7 +12,7 @@ async function getData() {
         let res = await fetch(url);
         let data = await res.json();
 
-        console.log(data)
+        // console.log(data)
         if (city == "") {
             alert("Please type a city name")
         } else {
@@ -22,7 +25,6 @@ async function getData() {
 }
 
 function displayData(data) {
-    console.log(data)
     document.getElementById("upcomingForecast").style.backgroundColor = "none"
     document.getElementById("upcomingForecast").style.boxShadow = "none"
     document.querySelector("#upcomingForecast").innerHTML = null;
