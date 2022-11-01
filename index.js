@@ -1,4 +1,6 @@
 var myApiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
+import footer from "./Components/footer.js";
+document.getElementById("footer").innerHTML = footer();
 async function getData() {
     try {
 
