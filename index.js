@@ -146,7 +146,7 @@ function displayData(data) {
 
 
     let butt = document.createElement("button")
-    butt.innerHTML = "Show upcoming 7 days forecast 🡲";
+    butt.innerHTML = "Show upcoming 7 days forecast 🙈";
     butt.className = "glow-on-hover";
     document.querySelector("#buttBox").append(butt)
     let f = true;
@@ -154,9 +154,11 @@ function displayData(data) {
         if (f) {
             document.getElementById('upcomingForecast').className = 'mountingAnimation';
             document.querySelector("#upcomingForecast").style.display = "flex";
+            butt.innerHTML = "Hide upcoming 7 days forecast 🐵";
             f = false;
             displayUpcomingForecast(data);
         } else {
+            butt.innerHTML = "Show upcoming 7 days forecast 🙈";
             f = true;
             document.querySelector("#upcomingForecast").style.display = "none";
         }
