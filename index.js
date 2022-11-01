@@ -1,6 +1,10 @@
 var myApiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
 async function getData() {
     try {
+        document.getElementById('container').classList.remove('mountingAnimation');
+        document.getElementById("container").innerHTML = "";
+        document.getElementById("upcomingForecast").style.display = "none";
+        document.getElementById("buttBox").innerHTML = "";
         let city = document.querySelector("#city").value
         let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${myApiKey}&units=metric`
         let res = await fetch(url);
@@ -16,11 +20,7 @@ async function getData() {
 }
 
 function displayData(data) {
-    document.getElementById("upcomingForecast").style.backgroundColor = "none"
-    document.getElementById("upcomingForecast").style.boxShadow = "none"
-    document.querySelector("#upcomingForecast").innerHTML = null;
-    document.getElementById("buttBox").innerHTML = ""
-    document.getElementById("container").innerHTML = "";
+    document.getElementById('container').className = 'mountingAnimation';
     let cityName = data.city.name
     let cloud = data.list[0].weather[0].description
     let temp = data.list[0].main.temp
@@ -149,7 +149,19 @@ function displayData(data) {
     butt.innerHTML = "Show upcoming 7 days forecast 🡲";
     butt.className = "glow-on-hover";
     document.querySelector("#buttBox").append(butt)
-    butt.onclick = function () { displayUpcomingForecast(data); };
+    let f = true;
+    butt.onclick = function () {
+        if (f) {
+            document.getElementById('upcomingForecast').className = 'mountingAnimation';
+            document.querySelector("#upcomingForecast").style.display = "flex";
+            f = false;
+            displayUpcomingForecast(data);
+        } else {
+            f = true;
+            document.querySelector("#upcomingForecast").style.display = "none";
+        }
+
+    };
 }
 
 

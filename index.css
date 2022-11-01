@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     font-family: system-ui;
-
 }
 
 body {
@@ -305,6 +304,8 @@ iframe {
     height: auto;
     margin: 20px auto;
     margin-bottom: 50px;
+
+
 }
 
 #upcomingForecast>div {
@@ -314,6 +315,7 @@ iframe {
     padding: 5px;
     padding-right: 20px;
     border-right: 2px solid grey;
+
 }
 
 #upcomingForecast>div>img {
@@ -352,4 +354,25 @@ iframe {
         height: 400px;
     }
 
+}
+
+
+/* animation on mouting of boxes */
+
+.mountingAnimation {
+    -webkit-animation-name: cssAnimation;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes cssAnimation {
+    from {
+        -webkit-transform: rotate(0deg) scale(0) skew(0deg) translate(0);
+    }
+
+    to {
+        -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0);
+    }
 }
