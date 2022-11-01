@@ -1,26 +1,21 @@
 var myApiKey = "3d4dff5515c3d3a103ef0450fb3cf1fa";
 async function getData() {
     try {
-
         let city = document.querySelector("#city").value
         let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${myApiKey}&units=metric`
         let res = await fetch(url);
         let data = await res.json();
-
-        console.log(data)
         if (city == "") {
             alert("Please type a city name")
         } else {
             displayData(data);
         }
-
     } catch (error) {
         console.log(error);
     }
 }
 
 function displayData(data) {
-    console.log(data)
     document.getElementById("upcomingForecast").style.backgroundColor = "none"
     document.getElementById("upcomingForecast").style.boxShadow = "none"
     document.querySelector("#upcomingForecast").innerHTML = null;
@@ -42,8 +37,36 @@ function displayData(data) {
 
     let div1 = document.createElement("div");
     div1.id = "tempBox"
-    let h2 = document.createElement("h2")
-    h2.innerHTML = cityName;
+
+    let cityDiv = document.createElement("div");
+    cityDiv.id = "cityDiv"
+
+    let cityname = document.createElement("p");
+    cityname.innerText = cityName;
+
+    let timeDateBox = document.createElement("div");
+    timeDateBox.id = "timeDateBox";
+    const today = new Date();
+    let date = document.createElement("p");
+    date.innerText = today.toDateString();
+    let time = document.createElement("p");
+    time.innerText = "Time - " + today.toLocaleTimeString();
+    timeDateBox.append(date, time);
+
+    cityDiv.append(cityname, timeDateBox);
+    // let h2 = document.createElement("p")
+    // let h3 = document.createElement("p")
+    // let h4 = document.createElement("p")
+
+    // h3.innerHTML = new Date().toDateString();
+    // var today = new Date();
+    // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    // var time = today.getHours() + ":" + today.getMinutes();
+    // h2.innerHTML = cityName;
+    // h4.innerHTML = "Time : " + time;
+    // cityDiv.append(h2, h3, h4);
+
+
 
     let div11 = document.createElement("div");
 
@@ -121,7 +144,7 @@ function displayData(data) {
 
     div12.append(p1, p2, p3, p4, p5, p6, p7, p8, p9)
 
-    div1.append(h2, div11, div12);
+    div1.append(cityDiv, div11, div12);
 
 
 
