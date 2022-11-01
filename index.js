@@ -67,7 +67,32 @@ function displayData(data) {
 
     let imgBox = document.createElement("div");
     let img = document.createElement("img");
-    img.src = "./images/sun.png"
+
+    // Specifying Day or Night ---------->
+    //  first toTimeString().split(" ") will return an array which lools like this 
+
+    // [
+    //     "23:42:29",
+    //     "GMT+0530",
+    //     "(India",
+    //     "Standard",
+    //     "Time)"
+    // ]
+
+    // and further split the 0th index element and get the first element which represetns the current hour
+    // and basis on current hour we will change the image;
+
+    let currentTime = today.toTimeString().split(" ")[0].split(":").map(Number)
+
+    if (currentTime[0] > 17 || currentTime[0] <= 5) {
+        div11.style.backgroundImage = "url(./images/night.jpg)"
+        img.src = "./images/moon.jpg"
+    } else {
+        div11.style.backgroundImage = "url(./images/day.jpg)"
+        img.src = "./images/sun.png"
+    }
+    // ------------------------------------------------------
+
     imgBox.append(img)
 
     div11.append(show, imgBox)
