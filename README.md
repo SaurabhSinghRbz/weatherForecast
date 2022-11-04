@@ -11,6 +11,8 @@ It is one of my individual projects. I have created it after my first class of r
 
 ## Features : 
 - You can check the weather of any city.
+- You can see the map of searched city to the right of it.
 - It will show the proper message on any wrong city name.
 - It will show the sun image during the day and the moon image at night.
 - You can see the next seven days' forecast.
+- This is fully responsive.
