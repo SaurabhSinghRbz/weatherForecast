@@ -1,6 +1,6 @@
 # _[Weather-Forecast-App...](https://current-weather.vercel.app/)_
 
-![weather](https://user-images.githubusercontent.com/90378786/200049903-9f8070ac-229d-45c2-bf85-80a7f5ef424b.png)
+
 
 
 ## _About Project_
